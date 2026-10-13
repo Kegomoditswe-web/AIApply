@@ -1,0 +1,29 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "atsResults",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userID", "order": "ASCENDING" },
+        { "fieldPath": "analysisDate", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "suggestions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "resultID", "order": "ASCENDING" },
+        { "fieldPath": "priorityLevel", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "coverLetters",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userID", "order": "ASCENDING" },
+        { "fieldPath": "generatedDate", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

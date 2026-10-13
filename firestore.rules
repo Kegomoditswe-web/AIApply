@@ -1,0 +1,77 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userID) {
+      return isSignedIn() && request.auth.uid == userID;
+    }
+
+    function isResultOwner(resultData) {
+      return isSignedIn() && resultData.userID == request.auth.uid;
+    }
+
+    match /users/{userID} {
+      allow read: if isOwner(userID);
+      allow create, update: if isOwner(userID)
+        && request.resource.data.emailAddress is string
+        && request.resource.data.firstName is string
+        && request.resource.data.lastName is string;
+      allow delete: if false;
+    }
+
+    match /cvs/{cvID} {
+      allow read: if isSignedIn() && resource.data.userID == request.auth.uid;
+      allow create: if isSignedIn()
+        && request.resource.data.userID == request.auth.uid
+        && request.resource.data.fileName is string
+        && request.resource.data.filePath is string;
+      allow update, delete: if isSignedIn() && resource.data.userID == request.auth.uid;
+    }
+
+    match /jobDescriptions/{jobID} {
+      allow read: if isSignedIn() && resource.data.userID == request.auth.uid;
+      allow create: if isSignedIn()
+        && request.resource.data.userID == request.auth.uid
+        && request.resource.data.jobTitle is string
+        && request.resource.data.descriptionText is string;
+      allow update, delete: if isSignedIn() && resource.data.userID == request.auth.uid;
+    }
+
+    match /atsResults/{resultID} {
+      allow read: if isSignedIn() && resource.data.userID == request.auth.uid;
+      allow create: if isSignedIn()
+        && request.resource.data.userID == request.auth.uid
+        && request.resource.data.jobTitle is string
+        && request.resource.data.atsScore is number;
+      allow update, delete: if isSignedIn() && resource.data.userID == request.auth.uid;
+    }
+
+    match /suggestions/{suggestionID} {
+      allow read: if isSignedIn()
+        && resource.data.resultID is string
+        && get(/databases/$(database)/documents/atsResults/$(resource.data.resultID)).data.userID == request.auth.uid;
+      allow create: if isSignedIn()
+        && request.resource.data.resultID is string
+        && request.resource.data.category is string
+        && get(/databases/$(database)/documents/atsResults/$(request.resource.data.resultID)).data.userID == request.auth.uid;
+      allow update, delete: if isSignedIn()
+        && resource.data.resultID is string
+        && get(/databases/$(database)/documents/atsResults/$(resource.data.resultID)).data.userID == request.auth.uid;
+    }
+
+    match /coverLetters/{letterID} {
+      allow read: if isSignedIn() && resource.data.userID == request.auth.uid;
+      allow create: if isSignedIn()
+        && request.resource.data.userID == request.auth.uid
+        && request.resource.data.letterContent is string;
+      allow update, delete: if isSignedIn() && resource.data.userID == request.auth.uid;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

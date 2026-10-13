@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Sample ATS Results</title>
+  <style>
+    body{font-family:Inter,Arial,sans-serif;background:#f7fafc;color:#1a202c;margin:0}
+    .main{max-width:980px;margin:32px auto;padding:20px}
+    .page-title{font-size:20px;font-weight:700;margin-bottom:6px}
+    .page-sub{color:#718096;margin-bottom:18px}
+    .grid3{display:flex;gap:16px}
+    .stat{background:#fff;padding:16px;border-radius:8px;flex:1;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+    .stat-num{font-size:28px;font-weight:700}
+    .stat-label{color:#718096}
+    .progress-bar{height:10px;background:#edf2f7;border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;background:#2b6cb0}
+    .grid2{display:flex;gap:16px;margin-top:20px}
+    .card{background:#fff;padding:16px;border-radius:8px;flex:1;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+    .card-title{font-weight:700;margin-bottom:8px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;margin:4px;background:#f1f5f9}
+    .chip-present{background:#e6fffa;color:#0b6950}
+    .chip-missing{background:#fff5f5;color:#742a2a}
+    .footer{margin-top:40px;color:#a0aec0;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="page-title">ATS Analysis Results</div>
+    <div class="page-sub">Sample Role — Analysed 17 September 2026</div>
+
+    <div class="grid3">
+      <div class="stat">
+        <div class="stat-num" style="color:#276749">78%</div>
+        <div class="stat-label">ATS Compatibility Score</div>
+        <div style="margin-top:10px" class="progress-bar"><div class="progress-fill" style="width:78%;background:#276749"></div></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#2b6cb0">12/18</div>
+        <div class="stat-label">Keywords Matched</div>
+        <div style="margin-top:10px" class="progress-bar"><div class="progress-fill" style="width:67%;background:#2b6cb0"></div></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:#c53030">6</div>
+        <div class="stat-label">Missing Keywords</div>
+        <div style="margin-top:10px" class="progress-bar"><div class="progress-fill" style="width:33%;background:#e53e3e"></div></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Keyword Match Report</div>
+        <div style="margin-bottom:10px"><strong style="font-size:13px;color:#276749">✅ Present in your CV</strong></div>
+        <div style="margin-bottom:16px">
+          <span class="chip chip-present">python</span>
+          <span class="chip chip-present">react</span>
+          <span class="chip chip-present">aws</span>
+          <span class="chip chip-present">sql</span>
+        </div>
+        <div style="margin-bottom:10px"><strong style="font-size:13px;color:#c53030">❌ Missing from your CV</strong></div>
+        <div>
+          <span class="chip chip-missing">docker</span>
+          <span class="chip chip-missing">kubernetes</span>
+          <span class="chip chip-missing">mongodb</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Section Scores</div>
+        <div style="margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Technical Skills</span><span style="font-weight:600">65%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:65%;background:#c05621"></div></div>
+        </div>
+        <div style="margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Work Experience</span><span style="font-weight:600">50%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:50%;background:#c05621"></div></div>
+        </div>
+        <div style="margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Education</span><span style="font-weight:600">40%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:40%;background:#c05621"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>CV Formatting</span><span style="font-weight:600">72%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:72%;background:#276749"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:16px">
+      <button style="padding:8px 12px;border-radius:6px;border:1px solid #cbd5e0;background:#fff">← Back</button>
+      <button style="padding:8px 12px;border-radius:6px;background:#3182ce;color:#fff;border:none">View Suggestions →</button>
+    </div>
+
+  </div>
+  <div class="footer">AI-Powered Job Application System | Sample Screenshot</div>
+</body>
+</html>
